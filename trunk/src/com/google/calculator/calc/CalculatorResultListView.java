@@ -15,7 +15,6 @@
 package com.google.calculator.calc;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -32,7 +31,23 @@ import android.widget.ListView;
  */
 public class CalculatorResultListView extends ListView {
 
-  /**
+  public CalculatorResultListView(Context context, AttributeSet attrs,
+			int defStyle) {
+		super(context, attrs, defStyle);
+	    initializeResultListView(context);
+	}
+
+	public CalculatorResultListView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+	    initializeResultListView(context);
+	}
+
+	public CalculatorResultListView(Context context) {
+		super(context);
+	    initializeResultListView(context);
+	}
+
+/**
    * Represents the computations.
    */
   private ArrayList<ComputationUnit> history = null;
@@ -56,27 +71,6 @@ public class CalculatorResultListView extends ListView {
   private InputTextView calculatorInputTextView;
 
   /**
-   * Constructor for CalculatorResultListView.
-   * 
-   * @param context
-   * @param attrs
-   * @param inflateParams
-   */
-  public CalculatorResultListView(Context context, AttributeSet attrs, Map inflateParams) {
-    super(context, attrs, inflateParams);
-    initializeResultListView(context);
-  }
-  /**
-   * Constructor for CalculatorResultListView.
-   * 
-   * @param context
-   */
-  public CalculatorResultListView(Context context) {
-    super(context);
-    initializeResultListView(context);
-  }
-
-  /**
    * Initializes the view. Constructor helper.
    * 
    * @param context
@@ -86,7 +80,7 @@ public class CalculatorResultListView extends ListView {
     adapter = new ComputationUnitAdapter(history);
     this.setAdapter(adapter);
     // Does it work?
-    mLayoutMode = ListView.LAYOUT_FORCE_BOTTOM;
+    // mLayoutMode = ListView.LAYOUT_FORCE_BOTTOM;
     
     // When an item is clicked, fill the input calculatorTextView with this item.
     this.setOnItemClickListener(new OnItemClickListener() {

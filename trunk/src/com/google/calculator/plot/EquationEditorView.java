@@ -15,7 +15,6 @@
 package com.google.calculator.plot;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -30,19 +29,24 @@ import android.widget.ListView;
  */
 public class EquationEditorView extends ListView {
 
-  private ArrayList<Equation> listEquations;
+  public EquationEditorView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+	    initializeEquationEditorView();
+	}
+
+	public EquationEditorView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+	    initializeEquationEditorView();
+	}
+
+	public EquationEditorView(Context context) {
+		super(context);
+	    initializeEquationEditorView();
+	}
+
+private ArrayList<Equation> listEquations;
   private EquationAdapter adapter;
   
-  public EquationEditorView(Context context) {
-    super(context);
-    initializeEquationEditorView();
-  }
-
-  public EquationEditorView(Context context, AttributeSet attrs,
-      Map inflateParams) {
-    super(context, attrs, inflateParams);
-    initializeEquationEditorView();
-  }
 
   private void initializeEquationEditorView() {
     listEquations = new ArrayList<Equation>();

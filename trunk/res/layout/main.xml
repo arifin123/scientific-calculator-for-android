@@ -27,7 +27,7 @@ limitations under the License.
     <LinearLayout android:orientation="horizontal"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content">
-      <com.google.calculator.calc.CalculatorInputTextView android:id="@+id/edition" 
+    <com.google.calculator.calc.CalculatorInputTextView android:id="@+id/edition" 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

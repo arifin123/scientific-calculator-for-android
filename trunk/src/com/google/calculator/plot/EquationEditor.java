@@ -23,7 +23,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.Menu.Item;
+import android.view.MenuItem;
 
 /**
  * Activity Equation Editor.
@@ -45,21 +45,21 @@ public class EquationEditor extends Activity {
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
       super.onCreateOptionsMenu(menu);
-      menu.add(0, PLOT_ID, R.string.menu_eq_editor_plot);
-      menu.add(0, ADD_EQUATION_ID, R.string.menu_eq_editor_add_equation);
+      menu.add(0, PLOT_ID, 0, R.string.menu_eq_editor_plot);
+      menu.add(0, ADD_EQUATION_ID, 0, R.string.menu_eq_editor_add_equation);
       return true;
   }
   
   @Override
-  public boolean onMenuItemSelected(int featureId, Item item) {
+  public boolean onMenuItemSelected(int featureId, MenuItem item) {
     super.onMenuItemSelected(featureId, item);
-    switch(item.getId()) {
+    switch(item.getItemId()) {
       case PLOT_ID:
         ArrayList<PlotData> listPlotData = equationsView.getPlotData();
         ScientificCalculatorApplication application = (ScientificCalculatorApplication) getApplication();
         application.setLastPlotData(listPlotData);
         Intent i = new Intent(this, EquationPlotter.class);
-        startSubActivity(i, 0);
+        startActivityForResult(i, 0);
         break;
       case ADD_EQUATION_ID:
         equationsView.addEquation();

@@ -15,7 +15,6 @@
 package com.google.calculator.plot;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -31,12 +30,23 @@ import android.view.View;
  */
 public class EquationPlotterView extends View {
 
-  private ArrayList<PlotData> listPlotData = null; 
-  
-  public EquationPlotterView(Context context, AttributeSet attrs,
-      Map inflateParams) {
-    super(context, attrs, inflateParams);
-  }
+  public EquationPlotterView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		// TODO Auto-generated constructor stub
+	}
+
+	public EquationPlotterView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// TODO Auto-generated constructor stub
+	}
+
+	public EquationPlotterView(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+	}
+
+private ArrayList<PlotData> listPlotData = null; 
+ 
   
   public void setListPlotData(ArrayList<PlotData> listPlotData) {
     this.listPlotData = listPlotData;

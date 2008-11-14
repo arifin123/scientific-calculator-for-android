@@ -23,7 +23,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.view.Menu.Item;
+import android.view.MenuItem;
 import android.widget.Button;
 
 /**
@@ -61,17 +61,17 @@ public class ScientificCalculator extends Activity {
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
       super.onCreateOptionsMenu(menu);
-      menu.add(0, EQ_EDITOR_ID, R.string.menu_eq_editor);
+      menu.add(0, EQ_EDITOR_ID, 0, R.string.menu_eq_editor);
       return true;
   }
   
   @Override
-  public boolean onMenuItemSelected(int featureId, Item item) {
+  public boolean onMenuItemSelected(int featureId, MenuItem item) {
     super.onMenuItemSelected(featureId, item);
-    switch(item.getId()) {
+    switch(item.getItemId()) {
     case EQ_EDITOR_ID:
       Intent i = new Intent(this, EquationEditor.class);
-      startSubActivity(i, 0);
+      startActivityForResult(i, 0);
       break;
     }
     return true;
