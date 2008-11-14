@@ -14,11 +14,7 @@
 
 package com.google.calculator.calc;
 
-
-
 import com.google.calculator.evaluation.PredefinedFunctions;
-
-import java.util.Map;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -33,32 +29,34 @@ import android.widget.AutoCompleteTextView;
  */
 public class InputTextView extends AutoCompleteTextView {
 
+  public InputTextView(Context context, AttributeSet attrs, int defStyle) {
+    super(context, attrs, defStyle);
+    setSingleLine();
+    setupAutoComplete();
+	}
+
+	public InputTextView(Context context, AttributeSet attrs) {
+    super(context, attrs);
+    setSingleLine();
+    setupAutoComplete();
+	}
+
+	public InputTextView(Context context) {
+    super(context);
+    setSingleLine();
+    setupAutoComplete();
+	}
+
   private static final String[] kKeywords = PredefinedFunctions.getFunctionsName();
   private int lastWordStartIndex;
   private int lastCursorPosition;
-
-  public InputTextView(Context context) {
-    super(context);
-    setupAutoComplete();
-  }
-
-  public InputTextView(Context context, AttributeSet attrs, Map inflateParams) {
-    super(context, attrs, inflateParams);
-    setupAutoComplete();
-  }
-
-  public InputTextView(Context context, AttributeSet attrs, Map inflateParams,
-      int defStyle) {
-    super(context, attrs, inflateParams, defStyle);
-    setupAutoComplete();
-  }
 
   /**
    * Setup autocomplete.
    */
   protected void setupAutoComplete() {
     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-        mContext, android.R.layout.simple_list_item_1, kKeywords);
+        this.getContext(), android.R.layout.simple_dropdown_item_1line, kKeywords);
     setAdapter(arrayAdapter);
     setThreshold(1);
   }

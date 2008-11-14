@@ -19,7 +19,6 @@ import com.google.calculator.plot.PlotData;
 import com.google.calculator.tree.EvaluationContext;
 import com.google.calculator.tree.Tree;
 
-
 import java.io.StringBufferInputStream;
 
 /**

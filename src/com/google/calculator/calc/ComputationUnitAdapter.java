@@ -57,8 +57,8 @@ public class ComputationUnitAdapter extends BaseAdapter {
     }
     
     if (position % 2 == 1) {
-      textView.setBackgroundColor(android.R.color.darker_gray);
-      
+      // TODO(laurentt): this does not work anymore.
+      textView.setBackgroundColor(android.R.color.background_light);
     }
     textView.setText(listComputationUnit.get(position).toString());
     return textView;

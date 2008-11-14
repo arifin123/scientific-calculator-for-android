@@ -19,8 +19,6 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 
 
-import java.util.Map;
-
 /**
  * TextView for input of mathematical expression. It features autocompletion by word.
  *  
@@ -28,21 +26,25 @@ import java.util.Map;
  */
 public class CalculatorInputTextView extends InputTextView {
   
-  // Reference of the view displaying the results.
+  public CalculatorInputTextView(Context context, AttributeSet attrs,
+			int defStyle) {
+		super(context, attrs, defStyle);
+		setHint("Enter your computation...");
+	}
+
+	public CalculatorInputTextView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		setHint("Enter your computation...");
+	}
+
+	public CalculatorInputTextView(Context context) {
+		super(context);
+		setHint("Enter your computation...");
+	}
+
+// Reference of the view displaying the results.
   private CalculatorResultListView resultDisplay;
   
-  /**
-   * Constructor of CalculatorInputTextView.
-   * 
-   * @param context
-   * @param attrs
-   * @param inflateParams
-   */
-  public CalculatorInputTextView(Context context, AttributeSet attrs,
-      Map inflateParams) {
-    super(context, attrs, inflateParams);
-    setHint("Enter your computation...");
-  }
   
   /**
    * Performs computation.
@@ -58,7 +60,7 @@ public class CalculatorInputTextView extends InputTextView {
     resetText();
   }
 
-  /**
+/**
    * Used to inject the result display view.
    * 
    * @param resultDisplay
@@ -70,17 +72,16 @@ public class CalculatorInputTextView extends InputTextView {
   @Override
   public boolean onKeyDown(int keyCode, KeyEvent event) {
     boolean result = super.onKeyDown(keyCode, event);
-    if (event.isCapPressed()) {
+    if (event.isShiftPressed()) {
       if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
         // Cap + down = previous entry.
         setText(resultDisplay.goPreviousEntry(), BufferType.EDITABLE);
       } else if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
         // Cap + up = next entry.
         setText(resultDisplay.goNextEntry(), BufferType.EDITABLE);
-      } else if (keyCode == KeyEvent.KEYCODE_NEWLINE) {
-        // Cap + enter = perform computation.
-        performComputation();
       }
+    } else if (keyCode == KeyEvent.KEYCODE_ENTER && !isPopupShowing()) {
+      performComputation();
     }
     return result;
   }
